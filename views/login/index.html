@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | GamerGames</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css"/>
+
+    
+    <link 
+        href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap" 
+        rel="stylesheet"
+    >
+    
+</head>
+
+<body class="background-login-img"> 
+    <div class="relative w-full h-full">
+        
+        <header class="fixed top-0 w-full z-50 bg-[#1b1b20] shadow-lg">
+            <div class="flex justify-between items-center px-5 py-2">
+                
+                <div class="flex items-center space-x-2">
+                    <img class="h-12" src="/images/logo_gamer_games.png" alt="logoNav" />
+                    <span class="text-xl font-bold text-white pixel-font">GamerGames</span>
+                </div>
+
+                <nav class="flex items-center space-x-4">
+                    <a
+                        href="/"
+                        class="text-lg font-bold text-white hover:text-gray-300 transition duration-150"
+                    >
+                        Inicio
+                    </a>
+
+                    <a href="/singup">
+                        <button
+                            class="px-4 py-2 bg-[#946831] text-white font-bold rounded-md transition duration-150 ease-in-out shadow-md hover:bg-[#835f2d]"
+                        >
+                            Registro
+                        </button>
+                    </a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="w-full h-full flex items-center justify-center p-8">
+            <div class="w-fulll g:w-2/5 p-8 space-y-6 bg-white/80 rounded-xl shadow-2xl text-white z-10">
+                
+                <h3 class="text-3xl font-bold text-gray-800 text-center">Inicio De Sesión</h3>
+                <p class="text-center text-gray-800 text-sm">Ingresa tus datos</p>
+            
+                <form class="space-y-4">
+                    <input 
+                        type="email" 
+                        placeholder="Nombre de Usuario" 
+                        class="w-full p-3 border-b-2 border-gray-500 bg-transparent focus:outline-none focus:border-blue-500 text-gray-800"
+                    >
+                    <input 
+                        type="password" 
+                        placeholder="Contraseña" 
+                        class="w-full p-3 border-b-2 border-gray-500 bg-transparent focus:outline-none focus:border-blue-500 text-gray-800"
+                    >
+                    
+                    <button 
+                        type="submit" 
+                        class="w-full bg-[#946831] hover:bg-[#835f2d] text-white font-bold py-3 rounded-lg transition shadow-md"
+                    >
+                        Login
+                    </button>
+                </form>
+
+                <p class="text-center text-sm text-gray-800 pt-2">
+                    No te has registrado? 
+                    <a href="/singup" class="text-[#4a7f97] hover:underline font-bold">Crea una cuenta aqui.</a>
+                </p>
+            </div>
+        </main>
+    </div>
+    
+    <footer
+        class="fixed bottom-0 w-full bg-[#1b1b20] text-white text-center py-2 border-t border-gray-700 z-50"
+    >
+        <div class="container mx-auto">
+            <p class="text-sm pixel-font"  class="pixel-font" >
+                &copy; 2025 GamerGames. Todos los derechos reservados.
+            </p>
+            <p class="text-xs mt-1 text-gray-400 hidden sm:block">
+                Desarrollado con pasión retro y moderno.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
