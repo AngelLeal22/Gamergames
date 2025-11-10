@@ -6,10 +6,15 @@ body{
    
 }
 
-h1,h2,p{
+p{
     margin: 0;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
+}
+
+
+h1,h2{
+     font-family: 'Press Start 2P', cursive, sans-serif !important;
 }
 
 #nav-bar{
@@ -160,8 +165,7 @@ thead{
 }
 
 .ini,a{
-    font-size: 700;
-   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 800;
     cursor: pointer;
     font-size:larger;
     text-decoration: none;

@@ -3,32 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>Registro | GamerGames</title>
-
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+
 
     <link
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
 
-    <style>
-      
-      .pixel-font {
-        font-family: "Press Start 2P", cursive;
-        /* Mejora la nitidez en algunos navegadores */ 
-        text-rendering: crispEdges;
-      }
-      .background-megaman {
-        /* ⚠️ Asegúrate de que esta ruta de imagen sea correcta */
-        background-image: url("/images/1364878.png");
-
-        /* Usar un porcentaje para permitir el movimiento de la animación */
-        background-size: 100% auto;
-        background-attachment: fixed;
-        background-repeat: no-repeat;
-      }
-    </style>
+    
   </head>
   <body>
     <div class="min-h-screen background-megaman flex flex-col relative">
@@ -56,6 +42,8 @@
           </a>
         </nav>
       </header>
+
+       <div id="notification" class="fixed top-20 left-0 right-0"></div>
 
       <main class="flex-grow flex justify-center items-center py-10">
         <div
@@ -155,6 +143,6 @@
       </footer>
     </div>
 
-    <script src="index.js"></script>
+    <script type="module" src="./index.js"></script>
   </body>
 </html>

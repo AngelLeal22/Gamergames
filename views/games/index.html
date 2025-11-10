@@ -4,6 +4,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <link 
+        href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap" 
+        rel="stylesheet"
+    >
   <link rel="stylesheet" href="style.css" />
   	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <title>GamerGames</title>
@@ -13,9 +17,9 @@
   <!-- nav bar -->
   <nav id="nav-bar">
     <div id="nav-content">
-      <img src="logo_gamer_games.png" alt="logo" id="logo">
+      <img src="/images/logo_gamer_games.png" alt="logo" id="logo">
       <h1 id="nav-title">GamerGames</h1>
-      <p id="Cs"   class="ini"> <a href="/singup" target="_blank">Cerrar Sesión</a></p>
+      <p id="Cs"   class="ini"> <a href="#" target="_blank">Cerrar Sesión</a></p>
       
 
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -52,64 +56,80 @@
   <!-- section hero -->
   <section id="hero">
     <div id="hero-content">
-
-
-
+    <div> 
+      <p>Busca El Título de tu Preferencia</p>
+      <input 
+    id="barra"
+      type="text" placeholder="Buscar">
+    </div>
     </div>
   </section>
-
-  <!-- section info -->
-  <section id="info">
-    <div id="info-container">
-      <div class="info-div">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-          class="info-icon">
-          <path stroke-linecap="round" stroke-linejoin="round"
-            d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
-        </svg>
-        <p>
-          +500000 Juegos en linea <br />
-          Explora los titulos mas recientes.
-        </p>
-      </div>
-      <div class="info-div">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-          class="info-icon">
-          <path stroke-linecap="round" stroke-linejoin="round"
-            d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z" />
-        </svg>
-
-        <p>
-          Somos expertos en videojuegos,ven y unete a nuestra comunidad. <br />
-        </p>
-      </div>
-    </div>
+ 
     <hr>
   </section>
 
-  <!-- Section Games -->
 
-  <!-- <section id="games">
-    <div id="juegos-container">
-      <h3 id="game-title3">Lista de Juegos</h3>
-      <ul id="games-list">
-       
-      </ul>
-    </div>
-  </section> -->
 
   <header>
     <h1 id="tienda">Lista de Titulos</h1>
     
   </header>
+  <br>
+  <section>
+    <div>
+  <button class="genre-btn" data-genre="all">Todos los Juegos</button>
+  <button class="genre-btn" data-genre="battle royal">Battle Royal</button>
+  <button class="genre-btn" data-genre="shooter">Shooter</button>
+  <button class="genre-btn" data-genre="rpg">RPG</button>
+  <button class="genre-btn" data-genre="mmo">MMO</button>
+    </div>
+
+  </section>
 
   <main>
     <section class="game-grid" id="gameGrid">
       <!-- Aquí se insertarán las tarjetas con JavaScript -->
     </section>
   </main>
+<section id="checkout-modal" class="hidden">
+    <div class="checkout-container">
+        <div class="checkout-header">
+            <h2 class="checkout-title">Resumen de tu Pedido</h2>
+            <button id="close-checkout" class="close-btn">&times;</button>
+        </div>
 
+        <button id="add-more-games-btn" class="add-more-btn">
+            + Añadir más juegos
+        </button>
 
+        <div id="checkout-summary">
+            <table id="checkout-table">
+                <thead>
+                    <tr>
+                        <th class="checkout-col-img"></th>
+                        <th class="checkout-col-name">Juego</th>
+                        <th class="checkout-col-qty">Cantidad</th>
+                        <th class="checkout-col-price">Precio Total</th>
+                        <th class="checkout-col-del">Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody id="checkout-body">
+                    </tbody>
+            </table>
+        </div>
+        
+        <div class="checkout-total">
+            <span class="total-label">Subtotal:</span>
+            <span id="checkout-subtotal">$0.00</span>
+        </div>
+        <div class="checkout-total final">
+            <span class="total-label">Total Final:</span>
+            <span id="checkout-final-total">$0.00</span>
+        </div>
+
+        <button id="confirm-purchase-btn" class="buy-button">Finalizar Compra</button>
+    </div>
+</section>
   <script src="index.js"></script>
   
 </body>

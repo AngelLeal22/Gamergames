@@ -6,6 +6,9 @@ const path = require("path");
 require ("dotenv").config();
 const axios = require("axios")
 const gameRouter = require("./controllers/game");
+const usersRouter = require("./controllers/user");
+const loginRouter = require('./controllers/login');
+const logoutRouter = require("./controllers/logout");
 
 
 
@@ -14,6 +17,7 @@ const gameRouter = require("./controllers/game");
 // todo lo que sea con .evn(se le coloca process.env)
 
 
+// conectar a MongoDB (usar una sola vez)
 (async()=> {
     try {
         await mongoose.connect(process.env.MONGO_URI_TEST);
@@ -29,6 +33,21 @@ const gameRouter = require("./controllers/game");
 
 //middleware
 
+// permitir parseo de JSON en body (necesario para leer req.body)
+app.use(express.json());
+
+// CORS simple para desarrollo: permite peticiones desde otros orígenes (ej. Live Server en :5500)
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    if (req.method === 'OPTIONS') {
+        res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
+        return res.sendStatus(200);
+    }
+    next();
+});
+
+
 
 
 
@@ -39,10 +58,14 @@ app.use('/login', express.static(path.resolve('views','login')));
 app.use('/singup', express.static(path.resolve('views','singup')));
 app.use('/games', express.static(path.resolve('views','games')));
 app.use('/images', express.static(path.resolve('images')));
+app.use('/Components', express.static(path.resolve('views','Components')));
 
 
 //RUTAS BACKEND
 app.use("/api/games", gameRouter);
+app.use("/api/users", usersRouter);
+app.use('/api/login', loginRouter);
+app.use('/api/logout', logoutRouter);
 
 
 
@@ -50,15 +73,7 @@ app.use("/api/games", gameRouter);
 // todo lo que sea con .evn(se le coloca process.env)
 
 
-(async()=> {
-    try {
-        await mongoose.connect(process.env.MONGO_URI_TEST);
-        console.log("conectado a MongoDB")
-    } catch (error) {
-        console.log(error);
-    }
-
-})()
+// (la conexión a MongoDB ya se realizó arriba)
 
 
 module.exports= app;

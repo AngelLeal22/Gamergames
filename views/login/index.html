@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>Login | GamerGames</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -52,17 +53,21 @@
                 <h3 class="text-3xl font-bold text-gray-800 text-center">Inicio De Sesión</h3>
                 <p class="text-center text-gray-800 text-sm">Ingresa tus datos</p>
             
-                <form class="space-y-4">
+                <form class="space-y-4" id="form">
                     <input 
-                        type="email" 
+                        id="name-input"
+                        type="user" 
                         placeholder="Nombre de Usuario" 
                         class="w-full p-3 border-b-2 border-gray-500 bg-transparent focus:outline-none focus:border-blue-500 text-gray-800"
                     >
-                    <input 
+                    <input
+                        id="password-input"
                         type="password" 
                         placeholder="Contraseña" 
                         class="w-full p-3 border-b-2 border-gray-500 bg-transparent focus:outline-none focus:border-blue-500 text-gray-800"
                     >
+
+                     <p id="error-text" class="text-sm text-red-600"></p>
                     
                     <button 
                         type="submit" 
@@ -92,5 +97,8 @@
             </p>
         </div>
     </footer>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="index.js"></script>
 </body>
+
 </html>

@@ -48,4 +48,25 @@ shopIcon.addEventListener("click", (e) => {
 tableClear.addEventListener("click", e => {
     table.innerHTML= "";
 
+
+// Comprar: si el usuario no está autenticado, redirigir a /login
+const btnComprar = document.querySelector('#btnC');
+if (btnComprar) {
+  btnComprar.addEventListener('click', async (e) => {
+    e.preventDefault();
+    try {
+      // consultar estado de sesión en el backend
+      const resp = await axios.get('/api/login/status');
+      if (resp.status === 200) {
+        // usuario autenticado -> aquí podrías proceder con la compra
+        window.location.pathname = '/games';
+      } else {
+        window.location.pathname = '/login';
+      }
+    } catch (err) {
+      // no autenticado o error -> llevar a login
+      window.location.pathname = '/login';
+    }
+  });
+}
 })
