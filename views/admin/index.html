@@ -10,7 +10,7 @@
     >
   <link rel="stylesheet" href="style.css" />
   	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <title>GamerGames</title>
+  <title>Admin</title>
 </head>
 
 <body>
@@ -55,14 +55,7 @@
 
   <!-- section hero -->
   <section id="hero">
-    <div id="hero-content">
-    <div> 
-      <p>Busca El Título de tu Preferencia</p>
-      <input 
-    id="barra"
-      type="text" placeholder="Buscar">
-    </div>
-    </div>
+    
   </section>
  
     <hr>
@@ -71,21 +64,52 @@
 
 
   <header>
-    <h1 id="tienda">Lista de Titulos</h1>
+    <h1 id="tienda">Métodos de Pago</h1>
     
   </header>
   <br>
-  <section>
-    <div>
-  <button class="genre-btn" data-genre="all">Todos los Juegos</button>
-  <button class="genre-btn" data-genre="battle royal">Battle Royal</button>
-  <button class="genre-btn" data-genre="shooter">Shooter</button>
-  <button class="genre-btn" data-genre="rpg">RPG</button>
-  <button class="genre-btn" data-genre="mmo">MMO</button>
-    </div>
-
-  </section>
-
+ <form id="form">
+    <!-- <select name="" id="">
+        <option value="">Pago Movil</option>
+        <option value="">Binance</option>
+        <option value="">Zinli</option>
+        <option value="">Paypal</option>
+    </select> -->
+    <input type="text" placeholder="Nombre del Metodo de Pago">
+    <input type="text" placeholder="Ingrese Un Número de Telefono">
+    <input type="text" placeholder="Ingrese La Cedula">
+    <input type="text" placeholder="Ingrese El correo">
+    <input type="text" placeholder="Ingrese El Banco">
+    <Button id="gu">Guardar</Button>
+    
+ </form>
+<table border="1">
+        <thead>
+            <tr>
+                <th>Nombre del Pago</th>
+                <th>Teléfono</th>
+                <th>Cédula</th>
+                <th>Banco</th>
+                <th>Correo</th>
+                <th>Activo (Sí/No)</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a href="#">&#0000; Editar</a> 
+                    <a href="#">&#10006; Eliminar</a>
+                </td>
+            </tr>
+            </tbody>
+    </table>
   <main>
     <section class="game-grid" id="gameGrid">
       <!-- Aquí se insertarán las tarjetas con JavaScript -->

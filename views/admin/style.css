@@ -1,0 +1,796 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding-top: 4rem;
+  position: relative;
+  background-color: #ffffff;
+}
+
+h1,
+h2 {
+  margin: 0;
+  font-family: "Press Start 2P", cursive, sans-serif !important;
+}
+
+#nav-bar {
+  position: fixed;
+  color: rgba(255, 255, 255, 0.884);
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #1d1c22;
+  height: 4rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  z-index: 10;
+}
+
+#shop-icon {
+  width: 4rem;
+  height: 3rem;
+  background-color: aliceblue;
+  padding: 0.1rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+
+  /* transition es para que no se vea tan agresiva el cambio de color */
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+  color: rgb(94, 92, 92);
+}
+
+#shop-icon:hover {
+  color: rgb(117 182 36);
+}
+
+#nav-content {
+  /* inherit sirve para darle al misma altura del elemento padre al elemento hijo  */
+  height: inherit;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  /* con max-width, no utiliza el 100% de la pantalla , margin 0 auto,centra el contenido */
+  max-width: 70rem;
+  margin: 0 auto;
+  position: relative;
+  color: rgb(255, 255, 255);
+  background-color: #1d1c22;
+}
+
+#tienda {
+  text-align: center;
+  color: #ffffff;
+  gap: 5px;
+}
+
+#Cs {
+  display: flex;
+  position: relative;
+  margin-right: -1040px;
+  font-weight: 600;
+}
+
+.cart {
+  height: 0rem;
+  position: absolute;
+  top: 4rem;
+  width: 50px;
+  right: 0;
+  background-color: #1d1c22b6;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: auto;
+  transition: all 0.3s ease-in;
+}
+
+table {
+  table-layout: fixed;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+td {
+  height: 5rem;
+  font-weight: 700;
+  padding: 1rem 0;
+  border-bottom: 1px solid #1d1c22b6;
+}
+
+/* Imagenes dentro del carrito: ajusta el tamaño aquí */
+.cart img,
+#table-body img {
+  width: 200px; /* ajustar a lo que necesites */
+  height: 100px;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+  margin: 0 auto;
+}
+
+thead {
+  height: 2rem;
+  border-bottom: 1px solid #1d1c22b6;
+}
+
+#btnC {
+  padding: 1rem;
+  margin-top: 9rem;
+  cursor: pointer;
+  background-color: rgb(117 182 36);
+  font-weight: 700;
+  color: aliceblue;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease-in;
+}
+
+#btnC:hover {
+  background-color: rgb(70, 114, 17);
+}
+
+#table-clear {
+  padding: 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  background-color: rgb(117 182 36);
+  font-weight: 700;
+  color: aliceblue;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease-in;
+}
+
+#table-clear:hover {
+  background-color: rgb(70, 114, 17);
+}
+
+.show-cart {
+  height: 25rem;
+  padding: 1rem;
+}
+
+#hero-icon {
+  width: 2rem;
+  height: 2rem;
+  color: rgb(117 182 36);
+  gap: 2rem;
+}
+
+#hero {
+  /* esto es para indicar que calcule el 100 de la pantalla MENOS la barra de navegacion */
+  height: calc(50vh - 1rem);
+  background-image: url("/images/3605768865-preview\ \(online-video-cutter_com\)_mp4.gif");
+  background-position: center;
+  background-size: cover;
+  padding: 0.1rem;
+  gap: 1rem;
+}
+
+.ini,
+a {
+  font-size: 700;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  cursor: pointer;
+  font-size: larger;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+#hero-content {
+  height: 100%;
+  display: flex;
+  max-width: 80rem;
+  margin: 0 auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: rgb(255, 255, 255);
+  height: calc(100vh - 4rem);
+}
+
+#hero-title {
+  font-size: 2.25rem;
+}
+
+#hero-input {
+  display: flex;
+  background-color: #ffffff;
+  padding: 0.4rem;
+  border-radius: 0.5rem;
+  gap: 12px;
+}
+
+input {
+  width: 80%;
+  background-color: transparent;
+  outline: none;
+  font-size: 1.125rem;
+}
+
+#info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  color: aliceblue;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.info-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid white;
+  padding: 0.5rem;
+}
+
+.info-icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+#info {
+  padding: 1rem;
+  background-color: #1d1c22;
+}
+svg {
+  width: 50px;
+  cursor: pointer;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 40px;
+}
+
+.game-card {
+  background-color: #fffefe;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(255, 60, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.game-card:hover {
+  transform: scale(1.03);
+}
+
+.game-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.game-card .info {
+  padding: 15px;
+  /* make info area a column so button can stick to the bottom */
+  display: flex;
+  flex-direction: column;
+  min-height: 140px; /* keep consistent card height for text/button alignment */
+}
+
+.game-card .info h3 {
+  margin: 0 0 10px;
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.game-card .info p {
+  /* limit paragraph to a fixed number of lines and keep consistent height */
+  flex: 1 1 auto;
+  margin: 0 0 0.75rem 0;
+  padding: 0.25rem 0;
+  font-size: 1.05rem;
+  /* fuente más legible para la descripción */
+  font-family: 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 400;
+  color: #1f2937; /* texto oscuro, buena legibilidad sobre fondo claro */
+  line-height: 1.2em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* show up to 3 lines */
+  -webkit-box-orient: vertical;
+}
+
+.game-card .info button {
+  /* push button to the bottom and align to the right */
+  margin-top: auto;
+  align-self: flex-end;
+  padding: 0.5rem 0.75rem;
+}
+
+#notFound {
+  color: #fffefe;
+  font-family: "Press Start 2P", cursive, sans-serif !important;
+}
+
+.game-info-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+#games {
+  min-height: 100vh;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1d1c22;
+}
+#logo {
+  position: absolute;
+  margin-top: -25px;
+  margin-left: -110px;
+  height: 85px;
+  width: 85px;
+}
+
+#juegos-container {
+  max-width: 80rem;
+  margin: 0 auto;
+  width: 100%;
+}
+
+#game-title3 {
+  font-weight: 700;
+  font-size: 2rem;
+  text-align: center;
+  color: #ffffff;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+#games-list {
+  margin: 0;
+  padding: 1rem;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.juegos-item {
+  background-color: rgba(255, 255, 255, 0.89);
+  border-radius: 0.5rem;
+  color: #000000;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  transform: scale(1);
+  transition: all 0.3s ease-in;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.juegos-item:hover {
+  transform: scale(1.05);
+}
+
+.juego {
+  height: 40%;
+  border-radius: 0.5rem;
+}
+
+.game-info {
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  font-size: 1.25rem;
+}
+
+.game-title .game-price {
+  font-weight: 700;
+}
+
+.game-btn {
+  padding: 1rem;
+  font-weight: 700;
+  background-color: rgb(117 182 36);
+  color: #ffffff;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+
+.game-btn:hover {
+  background-color: rgb(70, 114, 17);
+}
+
+/* Estilo para el contenedor de la barra de búsqueda dentro del hero */
+#hero-content > div {
+  /* Esto es el div que contiene <p> y <input> */
+  background-color: rgba(
+    117,
+    9,
+    59,
+    0
+  ); /* Fondo negro semitransparente (70% opacidad) */
+  padding: 20px 40px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el contenido horizontalmente */
+  justify-content: center; /* Centra el contenido verticalmente */
+}
+
+/* Asegurar que el texto dentro de este div sea visible */
+#hero-content p {
+  color: #ffffff;
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+
+  font-family: "Press Start 2P", cursive, sans-serif !important;
+}
+
+/* Estilos para la barra de búsqueda (Input) */
+#barra {
+  /* Tamaño */
+  width: 350px; /* Tamaño grande */
+  max-width: 80vw; /* Asegura que no se salga en pantallas pequeñas */
+  padding: 15px 20px; /* Mayor relleno para hacerlo más grande */
+  font-size: 1.125rem;
+
+  /* Diseño (similar al neón/verde de tu logo) */
+  border: 2px solid rgb(103, 103, 103); /* Borde con el color verde principal */
+  background-color: #d2d2d2; /* Fondo oscuro */
+  color: #000000; /* Texto blanco */
+
+  /* Forma y efectos */
+  border-radius: 8px; /* Bordes suaves */
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+/* Estilo para el placeholder (asegura que se vea) */
+#barra::placeholder {
+  color: #000000; /* Color gris claro */
+  opacity: 1; /* Asegura que no haya transparencia */
+}
+
+/* Efecto al enfocar */
+#barra:focus {
+  box-shadow: 0 0 10px rgba(0, 188, 212, 0.7); /* Sombra brillante */
+}
+
+/* Centra la sección que contiene los botones */
+header + br + section {
+  /* Selecciona la <section> justo después de <header> y <br> */
+  text-align: center; /* Centra los elementos de bloque y línea, incluyendo el div de botones */
+  padding: 20px 0;
+}
+
+/* Estilo para los botones de género */
+.genre-btn {
+  /* Estilos base (usa tus estilos actuales para los botones, si tienes) */
+  padding: 10px 15px;
+  margin: 5px;
+  background-color: #333333;
+  color: white;
+  border: 1px solid #666666;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.genre-btn:hover {
+  background-color: #4a4a4a;
+  border-color: rgb(117, 182, 36);
+}
+
+/* Estilo para el botón activo (el que está siendo filtrado) */
+.genre-btn.active {
+  background-color: rgb(117, 182, 36);
+  border-color: rgb(117, 182, 36);
+  font-weight: bold;
+}
+
+#notFound {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #fffefe;
+  text-align: center;
+  font-family: "Press Start 2P", cursive, sans-serif !important;
+  width: 100vw;
+  height: auto;
+  z-index: 100;
+}
+
+
+/* ESTILOS VISTA DE COMPRA (CHECKOUT MODAL) */
+
+
+#checkout-modal {
+   /* Pantalla completa de fondo oscuro para bloquear el contenido */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000; /* Asegura que esté por encima de todo */
+}
+
+/* Clase para ocultar el modal inicialmente */
+#checkout-modal.hidden {
+    display: none;
+}
+
+.checkout-container {
+    width: 95%;
+    max-width: 900px; /* Tamaño máximo para tablets/desktop */
+    background-color: #1a1a1a;
+    border: 2px solid rgb(117, 182, 36); /* Borde verde característico */
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 0 25px rgba(117, 182, 36, 0.4);
+    color: #ffffff;
+    max-height: 90vh; /* Altura máxima visible */
+    overflow-y: auto;
+}
+
+.checkout-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #30363d;
+}
+
+.checkout-title {
+    font-size: 1.6rem;
+    color: #ffffff;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 2.2rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: #ff4d4d; /* Rojo para el botón de cierre */
+}
+
+
+/* 2. ESTILOS DE LA TABLA (CRUD) */
+
+#checkout-summary {
+    max-height: 40vh; /* Altura máxima para el scroll de los ítems */
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding-right: 5px;
+}
+
+#checkout-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #c9d1d9;
+    font-size: 0.95rem;
+}
+
+#checkout-table th {
+    padding: 10px 5px;
+    border-bottom: 2px solid #30363d;
+    text-align: left;
+    font-weight: 700;
+    color: rgb(117, 182, 36);
+}
+
+#checkout-table td {
+    padding: 12px 5px;
+    border-bottom: 1px dotted #444;
+    vertical-align: middle;
+}
+
+#checkout-table tr:hover {
+    background-color: #2a2a2a;
+}
+
+.checkout-col-img { width: 60px; }
+.checkout-col-name { min-width: 150px; font-weight: 500;}
+.checkout-col-qty { width: 120px; text-align: center; }
+.checkout-col-price { width: 100px; text-align: right; font-weight: bold; }
+.checkout-col-del { width: 80px; text-align: center; }
+
+#checkout-table img {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    object-fit: cover;
+    border: 1px solid #333;
+}
+
+
+/* 3. CONTROLES CRUD (Editar/Eliminar) */
+
+
+/* Controles de cantidad */
+.qty-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qty-display {
+    width: 25px;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+}
+
+.qty-btn {
+    /* Estilo del botón + y - */
+    background-color: #3d3d3d;
+    color: #fff;
+    border: none;
+    width: 28px;
+    height: 28px;
+    line-height: 1;
+    font-weight: 900;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.qty-btn:hover {
+    background-color: rgb(117, 182, 36); /* Resaltar con el color principal */
+}
+
+/* Botón de Eliminar */
+.delete-item-btn {
+    background: none;
+    border: none;
+    color: #ff4d4d; /* Rojo para la acción de eliminar */
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.delete-item-btn:hover {
+    color: #cc0000;
+}
+
+/* Botón Añadir más juegos (Adquirir/Crear) */
+.add-more-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: transparent;
+    border: 2px dashed #4a4a4a;
+    color: #c9d1d9;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.add-more-btn:hover {
+    border-color: rgb(117, 182, 36);
+    color: rgb(117, 182, 36);
+}
+
+/* ==================================================== */
+/* 4. TOTALES Y BOTÓN FINALIZAR (POST) */
+/* ==================================================== */
+
+.checkout-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 1.1rem;
+    border-top: 1px solid #30363d;
+}
+
+.checkout-total.final {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: rgb(117, 182, 36);
+    border-top: 2px solid rgb(117, 182, 36);
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+.buy-button {
+    /* Estilo del botón de Finalizar Compra (POST) */
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: rgb(117, 182, 36);
+    color: #1a1a1a;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.buy-button:hover {
+    background-color: rgb(70, 114, 17);
+}
+
+
+
+/* mediasQuerys */
+
+@media (min-width: 640px) {
+  .cart {
+    width: 50%;
+  }
+
+  #hero-content {
+    align-items: flex-start;
+  }
+
+  #hero {
+    height: calc(80vh - 4rem);
+  }
+
+  #info-container {
+    flex-direction: row;
+  }
+  .info-div {
+    border: none;
+  }
+  .juegos-item {
+    width: 40%;
+  }
+
+  #games-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cart {
+    width: 50%;
+  }
+
+  #hero-content {
+    align-items: flex-start;
+  }
+
+  #hero {
+    height: calc(80vh - 4rem);
+  }
+
+  #info-container {
+    flex-direction: row;
+  }
+  .info-div {
+    border: none;
+  }
+  .juegos-item {
+    width: 30%;
+  }
+
+  #games-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}

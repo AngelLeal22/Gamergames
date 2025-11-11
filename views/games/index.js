@@ -5,7 +5,7 @@ const tableClear = document.querySelector("#table-clear");
 const busqueda = document.querySelector("#barra");
 const grid = document.getElementById("gameGrid");
 const logoutLink = document.querySelector("#Cs a");
-const genreButtons = document.querySelectorAll(".genre-btn");
+const genreButtons = document.querySelectorAll(".genre-btn"); //// Los botones de género (Battle Royal, Shooter, etc.)
 
 
 

@@ -9,6 +9,8 @@ const gameRouter = require("./controllers/game");
 const usersRouter = require("./controllers/user");
 const loginRouter = require('./controllers/login');
 const logoutRouter = require("./controllers/logout");
+const payRouter = require ("./controllers/payments");
+const { MONGO_URI } = require("./config");
 
 
 
@@ -20,7 +22,7 @@ const logoutRouter = require("./controllers/logout");
 // conectar a MongoDB (usar una sola vez)
 (async()=> {
     try {
-        await mongoose.connect(process.env.MONGO_URI_TEST);
+        await mongoose.connect(MONGO_URI);
         console.log("conectado a MongoDB")
     } catch (error) {
         console.log(error);
@@ -59,6 +61,7 @@ app.use('/singup', express.static(path.resolve('views','singup')));
 app.use('/games', express.static(path.resolve('views','games')));
 app.use('/images', express.static(path.resolve('images')));
 app.use('/Components', express.static(path.resolve('views','Components')));
+app.use('/admin' , express.static(path.resolve('views','admin')));
 
 
 //RUTAS BACKEND
@@ -66,6 +69,7 @@ app.use("/api/games", gameRouter);
 app.use("/api/users", usersRouter);
 app.use('/api/login', loginRouter);
 app.use('/api/logout', logoutRouter);
+app.use('/api/payments', payRouter);
 
 
 

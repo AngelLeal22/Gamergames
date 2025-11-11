@@ -1,3 +1,4 @@
+//Creacion de Selectores
 const shopIcon = document.querySelector("#shop-icon");
 const cart = document.querySelector(".cart");
 const table = document.querySelector("#table-body");
