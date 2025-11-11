@@ -173,6 +173,12 @@ thead{
     
 }
 
+ .pixel-font {
+        font-family: "Press Start 2P", cursive;
+        /* Mejora la nitidez en algunos navegadores */ 
+        text-rendering: crispEdges;
+      }
+
 
 #hero-content{
     height: 100%;
