@@ -14,14 +14,14 @@ form.addEventListener("submit",async  e =>{
             console.log( "este es el user en el login", user);
             const respuesta = await axios.post("/api/login",user);
             console.log(respuesta)
-            if (user.name ==! "AngelL") {
+            //if (//user.name ==! "AngelL") {
             
                 window.location.pathname = `/games/`
                 
-            }
-            else{
-               window.location.pathname = `/admin/` 
-            }
+            //}
+            //else{
+              // window.location.pathname = `/admin/` 
+            //}
   
         
     } catch (error) {
