@@ -11,7 +11,6 @@ form.addEventListener("submit",async  e =>{
             name: nameInput.value,
             password: passwordInput.value
             }
-            console.log( "este es el user en el login", user);
             const respuesta = await axios.post("/api/login",user);
             console.log(respuesta)
             //if (//user.name ==! "AngelL") {

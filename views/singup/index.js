@@ -8,9 +8,8 @@ const passwordInput = document.querySelector("#password-input");
 const matchInput = document.querySelector("#match-input");
 const formBtn = document.querySelector("#form-btn");
 const notification = document.querySelector("#notification");
-console.log(axios);
 
-console.log("hola")
+
 
 const EMAIL_VALIDATION = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 const PASSWORD_VALIDATION =
@@ -33,7 +32,7 @@ const validation = (input, regexValidation) => {
     input.classList.remove("outline-red-700", "outline-2", "outline");
     input.classList.remove("outline-green-700", "outline-2", "outline");
   } else if (regexValidation) {
-    // console.log(input);
+
     input.classList.remove(
       "focus:outline-red-700",
       "outline-red-700"
@@ -82,7 +81,7 @@ e.preventDefault();
       window.location.pathname = '/login';
     },1200);
     } catch (error) {
-      console.log("chao", error)
+      console.log(error)
       const errMsg = error?.response?.data?.error || error.message || 'Error en la petición';
       createNotification(true, errMsg);
       setTimeout(() =>{

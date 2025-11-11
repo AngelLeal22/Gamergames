@@ -609,7 +609,7 @@ header + br + section {
 }
 
 .checkout-col-img { width: 60px; }
-.checkout-col-name { min-width: 150px; font-weight: 500;}
+.checkout-col-name { min-width: 250px; font-weight: 800;}
 .checkout-col-qty { width: 120px; text-align: center; }
 .checkout-col-price { width: 100px; text-align: right; font-weight: bold; }
 .checkout-col-del { width: 80px; text-align: center; }
@@ -731,6 +731,43 @@ header + br + section {
 
 .buy-button:hover {
     background-color: rgb(70, 114, 17);
+}
+
+
+
+/* ... (Resto del CSS) ... */
+
+/* 5. ESTILOS ADICIONALES PARA EL SELECTOR DE PAGO */
+.payment-section {
+    margin: 20px 0;
+    padding-top: 10px;
+    border-top: 1px solid #30363d;
+}
+
+.payment-title {
+    font-size: 1.2rem;
+    color: rgb(117, 182, 36); /* Título en verde */
+    margin-bottom: 10px;
+    font-family: 'Inter', sans-serif; /* Más legible que Press Start 2P */
+    font-weight: 600;
+}
+
+.payment-select {
+    width: 100%;
+    padding: 12px 10px;
+    font-size: 1rem;
+    background-color: #2a2a2a; /* Fondo oscuro */
+    color: #ffffff;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    appearance: none; /* Oculta la flecha nativa */
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.payment-select:hover, .payment-select:focus {
+    border-color: rgb(117, 182, 36); /* Resalta en verde */
+    outline: none;
 }
 
 

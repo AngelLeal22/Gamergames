@@ -7,8 +7,6 @@ const grid = document.getElementById("gameGrid");
 const logoutLink = document.querySelector("#Cs a");
 const genreButtons = document.querySelectorAll(".genre-btn"); //// Los botones de género (Battle Royal, Shooter, etc.)
 
-
-
 // 1. DELEGACIÓN DE EVENTOS PARA EL CARRITO (Resuelve botones dinámicos y la imagen)
 grid.addEventListener("click", (e) => {
   // Verificamos si el elemento clicado tiene la clase 'game-btn'
@@ -44,11 +42,11 @@ grid.addEventListener("click", (e) => {
   }
 });
 
+//logica de abrir y cerrar el carrito
+
 shopIcon.addEventListener("click", (e) => {
   cart.classList.toggle("show-cart");
 });
-
-
 
 // 2. FUNCIÓN DE FILTRADO Y LÓGICA DE GÉNEROS
 // Cargar juegos con manejo de errores para que un fallo de red no rompa todo el script
@@ -62,9 +60,6 @@ shopIcon.addEventListener("click", (e) => {
     // Si la petición falla, seguimos con un array vacío para que el resto del script funcione
     juegos = [];
   }
-
-
-
 
   // FUNCIÓN REUTILIZABLE PARA RENDERIZAR JUEGOS
   function renderGames(
@@ -93,9 +88,6 @@ shopIcon.addEventListener("click", (e) => {
     }
   }
 
-
-
-
   // LÓGICA DE BÚSQUEDA
   if (busqueda) {
     busqueda.addEventListener("input", (e) => {
@@ -106,9 +98,6 @@ shopIcon.addEventListener("click", (e) => {
       renderGames(juegosFiltrados, "No se encontraron juegos con ese título.");
     });
   }
-
-
-
 
   // LÓGICA GENERALIZADA PARA BOTONES DE GÉNERO
   const genreButtonsLocal = document.querySelectorAll(".genre-btn");
@@ -133,35 +122,31 @@ shopIcon.addEventListener("click", (e) => {
           ? "No hay juegos disponibles."
           : `No se encontraron juegos de tipo ${genre.toUpperCase()}.`;
 
-          renderGames(juegosFiltradosPorGenero, notFoundMsg);
+      renderGames(juegosFiltradosPorGenero, notFoundMsg);
 
-          genreButtonsLocal.forEach((btn) => btn.classList.remove("active"));
-          this.classList.add("active");
-        });
-      });
-      
-      // INICIALIZACIÓN: Renderiza todos los juegos al cargar la página
-      renderGames(juegos, "No hay juegos disponibles.");
+      genreButtonsLocal.forEach((btn) => btn.classList.remove("active"));
+      this.classList.add("active");
+    });
+  });
 
+  // INICIALIZACIÓN: Renderiza todos los juegos al cargar la página
+  renderGames(juegos, "No hay juegos disponibles.");
 
-      //logica para cerrar sesion.
-      if (logoutLink) {
-        logoutLink.addEventListener("click", async (e) => {
-          e.preventDefault();
-          try {
-            await axios.get("/api/logout");
-          } catch (err) {
-            console.error("Logout failed", err);
-          }
-          window.location.pathname = "/login";
-        });
+  //logica para cerrar sesion.
+  if (logoutLink) {
+    logoutLink.addEventListener("click", async (e) => {
+      e.preventDefault();
+      try {
+        await axios.get("/api/logout");
+      } catch (err) {
+        console.error("Logout failed", err);
       }
+      window.location.pathname = "/login";
+    });
+  }
 
-      //logica para vaciar el carrito
-      tableClear.addEventListener("click", e => {
-          table.innerHTML= "";
-      })
-    })();
-
-
-
+  //logica para vaciar el carrito
+  tableClear.addEventListener("click", (e) => {
+    table.innerHTML = "";
+  });
+})();

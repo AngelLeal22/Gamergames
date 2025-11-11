@@ -14,7 +14,6 @@
 </head>
 
 <body>
-  <!-- nav bar -->
   <nav id="nav-bar">
     <div id="nav-content">
       <img src="/images/logo_gamer_games.png" alt="logo" id="logo">
@@ -53,7 +52,6 @@
     </div>
   </nav>
 
-  <!-- section hero -->
   <section id="hero">
     <div id="hero-content">
     <div> 
@@ -88,11 +86,54 @@
 
   <main>
     <section class="game-grid" id="gameGrid">
-      <!-- Aquí se insertarán las tarjetas con JavaScript -->
-    </section>
+      </section>
   </main>
 
-  <script src="index.js"></script>
+  <div id="checkout-modal" class="hidden">
+    <div class="checkout-container">
+        
+        <div class="checkout-header">
+            <h2 class="checkout-title">Confirmar Compra</h2>
+            <button class="close-btn" id="close-checkout-modal">&times;</button>
+        </div>
+
+        <div id="checkout-summary">
+            <table id="checkout-table">
+                <thead>
+                    <tr>
+                        <th class="checkout-col-img">Imagen</th>
+                        <th class="checkout-col-name">Título</th>
+                        <th class="checkout-col-qty">Cantidad</th>
+                        <th class="checkout-col-price">Precio/Subtotal</th>
+                        <th class="checkout-col-del">Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody id="checkout-table-body">
+                    </tbody>
+            </table>
+        </div>
+
+        <div class="payment-section">
+            <h3 class="payment-title">Método de Pago</h3>
+            <select id="payment-method-select" class="payment-select">
+                <option value="none" selected disabled>Seleccione un método</option>
+                <option value="visa">Pago Movil</option>
+                <option value="paypal">PayPal</option>
+                <option value="cripto">Binance</option>
+                <option value="transferencia">Transferencia Bancaria(Zinli)</option>
+            </select>
+        </div>
+
+        <div class="checkout-total final">
+            <span>TOTAL A PAGAR:</span>
+            <span id="final-checkout-total">$0.00</span>
+        </div>
+
+        <button class="buy-button" id="complete-purchase-btn">COMPLETAR COMPRA</button>
+
+    </div>
+  </div>
+  <script src="index2.js"></script>
   
 </body>
 

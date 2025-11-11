@@ -68,53 +68,32 @@
     
   </header>
   <br>
- <form id="form">
-    <!-- <select name="" id="">
-        <option value="">Pago Movil</option>
-        <option value="">Binance</option>
-        <option value="">Zinli</option>
-        <option value="">Paypal</option>
-    </select> -->
-    <input type="text" placeholder="Nombre del Metodo de Pago">
-    <input type="text" placeholder="Ingrese Un Número de Telefono">
-    <input type="text" placeholder="Ingrese La Cedula">
-    <input type="text" placeholder="Ingrese El correo">
-    <input type="text" placeholder="Ingrese El Banco">
-    <Button id="gu">Guardar</Button>
-    
- </form>
-<table border="1">
-        <thead>
-            <tr>
-                <th>Nombre del Pago</th>
-                <th>Teléfono</th>
-                <th>Cédula</th>
-                <th>Banco</th>
-                <th>Correo</th>
-                <th>Activo (Sí/No)</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                    <a href="#">&#0000; Editar</a> 
-                    <a href="#">&#10006; Eliminar</a>
-                </td>
-            </tr>
-            </tbody>
-    </table>
-  <main>
-    <section class="game-grid" id="gameGrid">
-      <!-- Aquí se insertarán las tarjetas con JavaScript -->
-    </section>
-  </main>
+  <section id="payment-admin-panel">
+    <div class="form-container">
+        <form id="form" class="payment-form">
+            <input type="text" name="nombre" id="payment-name-input" class="form-input" placeholder="...">
+            <button id="gu" type="submit" class="form-save-btn">Guardar</button>
+            <button id="cancel-edit-btn" type="button" class="form-cancel-btn hidden">Cancelar Edición</button>
+        </form>
+    </div>
+
+    <div class="table-container">
+        <h2 class="table-list-title">Métodos de Pago Registrados</h2>
+        <table id="payment-methods-table" class="payment-table">
+            <thead>
+                <tr>
+                    <th class="col-name">Nombre del Pago</th>
+                    <th class="col-actions">Editar</th>
+                    <th class="col-actions">Eliminar</th>
+                </tr>
+            </thead>
+            <tbody id="payment-table-body">
+                </tbody>
+        </table>
+    </div>
+
+</section>
+ 
 
   <script src="index.js"></script>
   

@@ -3,7 +3,7 @@ body {
   min-height: 100vh;
   padding-top: 4rem;
   position: relative;
-  background-color: #ffffff;
+  background-color: #000000;
 }
 
 h1,
@@ -731,6 +731,217 @@ header + br + section {
 
 .buy-button:hover {
     background-color: rgb(70, 114, 17);
+}
+
+
+/* ==================================================== */
+/* ESTILOS DE ADMINISTRACIÓN DE PAGOS (Admin Panel) */
+/* Nota: Asegúrate de que tu HTML use las clases e IDs correspondientes:
+   #payment-admin-panel, .payment-form, .form-input, .payment-table, etc.
+/* ==================================================== */
+
+#payment-admin-panel {
+    /* Contenedor principal del panel */
+    max-width: 70rem;
+    margin: 40px auto 60px auto;
+    padding: 20px;
+    background-color: #1d1c22; /* Fondo oscuro consistente con la nav bar */
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(117, 182, 36, 0.4); /* Sombra de neón verde */
+    color: #ffffff;
+}
+
+.form-title, .table-list-title {
+    color: rgb(117, 182, 36); /* Verde vibrante */
+    font-family: 'Press Start 2P', cursive, sans-serif !important;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-title {
+    font-size: 1.5rem;
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #30363d;
+}
+
+.payment-form {
+    /* Contenedor del formulario con layout de rejilla */
+    display: grid;
+    /* Las columnas se autoajustan, mínimo 250px */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    padding: 20px;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    background-color: #2a2a2a; /* Fondo ligeramente más claro que el principal */
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    background-color: #3d3d3d; /* Input oscuro */
+    border: 1px solid #555555;
+    color: #ffffff;
+    border-radius: 4px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
+}
+
+.form-input:focus {
+    border-color: rgb(117, 182, 36);
+    box-shadow: 0 0 5px rgba(117, 182, 36, 0.5); /* Efecto neón al enfocar */
+    outline: none;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    grid-column: span 1;
+}
+
+.input-label {
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+}
+
+.form-checkbox {
+    /* Estilos para el checkbox */
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: rgb(117, 182, 36); /* Color de marcado verde */
+}
+
+/* Botones del Formulario */
+.form-save-btn, .form-cancel-btn {
+    padding: 12px;
+    font-weight: 700;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+    grid-column: span 1; /* Ocupa una columna */
+}
+
+.form-save-btn {
+    background-color: rgb(117, 182, 36);
+    color: #1d1c22;
+}
+
+.form-save-btn:hover {
+    background-color: rgb(70, 114, 17);
+}
+
+.form-cancel-btn {
+    background-color: #ff4d4d; /* Rojo para cancelar */
+    color: #1d1c22;
+}
+
+.form-cancel-btn:hover {
+    background-color: #cc0000;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Estilos de la Tabla */
+
+.table-list-title {
+    font-size: 1.2rem;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #30363d;
+    margin-bottom: 15px;
+}
+
+.payment-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+}
+
+.payment-table th {
+    background-color: #2a2a2a;
+    color: rgb(117, 182, 36);
+    padding: 10px 5px;
+    text-align: left;
+    border-bottom: 2px solid rgb(117, 182, 36);
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.payment-table td {
+    padding: 10px 5px;
+    border-bottom: 1px solid #3d3d3d;
+    text-align: left;
+    vertical-align: middle;
+    font-size: 0.9rem;
+}
+
+.payment-table tbody tr:hover {
+    background-color: #2a2a2a;
+}
+
+/* Ajustes de columnas para que se vean bien */
+.col-name { width: 20%; }
+.col-phone, .col-cedula, .col-bank, .col-email { width: 15%; }
+.col-active { width: 5%; text-align: center;}
+.col-actions { width: 5%; text-align: center;}
+
+/* Botones de acción en la tabla */
+.edit-btn, .delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 5px;
+    transition: color 0.2s;
+}
+
+.edit-btn {
+    color: rgb(117, 182, 36); /* Verde para Editar */
+}
+
+.edit-btn:hover {
+    color: rgb(70, 114, 17);
+}
+
+.delete-btn {
+    color: #ff4d4d; /* Rojo para Eliminar */
+}
+
+.delete-btn:hover {
+    color: #cc0000;
+}
+
+/* Media Query para mejorar el layout en pantallas pequeñas (opcional, pero recomendado) */
+@media (max-width: 768px) {
+    .payment-form {
+        /* Fuerza a que los inputs en pantallas pequeñas ocupen todo el ancho */
+        grid-template-columns: 1fr;
+    }
+    .col-name, .col-phone, .col-cedula, .col-bank, .col-email {
+        /* Ajustar el ancho para que la tabla quepa mejor en móvil */
+        width: auto;
+    }
+    .payment-table {
+        /* Permite que la tabla se desplace horizontalmente si es muy ancha */
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    .payment-table thead, .payment-table tbody, .payment-table tr, .payment-table th, .payment-table td {
+        /* Para hacer la tabla más legible en móvil (a veces se necesita reestructurar la tabla para móvil) */
+        display: inline-block;
+    }
+    .payment-table tr {
+        margin-bottom: 10px;
+    }
 }
 
 
