@@ -1,5 +1,5 @@
 const PAGE_URL = process.env.NODE_ENV === "production"
-? "placeholder"
+? "https://gamergames-zcl9.onrender.com"
 : "htpp://localhost: 3000";
 
 const MONGO_URI= process.env.NODE_ENV === "production"
