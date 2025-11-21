@@ -28,7 +28,7 @@ const closePurchaseModalBtn = document.querySelector("#close-purchase-modal-btn"
 const paymentSelect = document.querySelector("#payment-select");
 const selectedMethodDetails = document.querySelector("#selected-method-details");
 // El HTML actual puede usar alguno de estos ids para el botón final
-const confirmPurchaseBtn = document.querySelector("#complete-purchase-btn");
+const confirmPurchaseBtn = document.querySelector("#confirm-purchase-btn");
 
 // Selectores del resumen rápido del checkout
 const checkoutSelect = document.querySelector('#payment-method-select');
@@ -40,14 +40,6 @@ const API_URL = '/api/payment-methods';
 
 
 
-confirmPurchaseBtn.addEventListener("click",  (e) => {
-
-  //para cuando le damos click aparezca el mensaje de exito
-  e.preventDefault();
-  alert("¡Compra completada con éxito! Gracias por tu compra.");
-  console.log(confirmPurchaseBtn)
-   closePurchaseModal()
-});
 
 
 // -------------------------------
@@ -167,7 +159,15 @@ function closePurchaseModal() {
   displayPaymentDetails(null);
 }
 
-// --- fin de ayudas (helpers) de métodos de pago ---
+if (confirmPurchaseBtn) {
+    confirmPurchaseBtn.addEventListener("click", (e) => { 
+        e.preventDefault(); // <--- ¡LÍNEA VITAL!
+        
+        alert("¡Pago Completado Exitosamente! 🎉"); 
+        
+        closePurchaseModal();
+    });
+}
 
 
 
