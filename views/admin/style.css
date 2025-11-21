@@ -662,14 +662,14 @@ header + br + section {
 .delete-item-btn {
     background: none;
     border: none;
-    color: #ff4d4d; /* Rojo para la acción de eliminar */
+    color: #070707; /* Rojo para la acción de eliminar */
     font-size: 1.5rem;
     cursor: pointer;
     transition: color 0.2s;
 }
 
 .delete-item-btn:hover {
-    color: #cc0000;
+    color: #010000;
 }
 
 /* Botón Añadir más juegos (Adquirir/Crear) */
@@ -904,12 +904,10 @@ header + br + section {
 }
 
 .edit-btn {
-    color: rgb(117, 182, 36); /* Verde para Editar */
+    color: rgb(116, 182, 36); /* Verde para Editar */
 }
 
-.edit-btn:hover {
-    color: rgb(70, 114, 17);
-}
+
 
 .delete-btn {
     color: #ff4d4d; /* Rojo para Eliminar */
@@ -945,6 +943,249 @@ header + br + section {
 }
 
 
+/* ============================================== */
+/* ESTILOS CRUD DE ADMINISTRACIÓN DE PAGOS */
+/* ============================================== */
+
+/* Estilos de la Sección General */
+#payment-methods-admin-section {
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #1d1c22; /* Fondo oscuro de la barra de navegación */
+    color: white;
+}
+
+#payment-methods-admin-section h2 {
+    color: #32CD32; /* Verde neón */
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Botón de Creación */
+#add-payment-btn.admin-btn {
+    margin-bottom: 20px;
+    /* Asegura que el botón de crear siempre se muestre como un bloque */
+    display: inline-block; 
+}
+
+/* Estilos de la Tabla */
+.payment-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #2c3e50; /* Fondo más oscuro para la tabla */
+    color: white;
+    border-radius: 8px;
+    overflow: hidden; /* Para que el borde redondeado funcione con la cabecera */
+}
+
+.payment-table th, 
+.payment-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #34495e; /* Separador de filas */
+}
+
+.payment-table thead th {
+    background-color: #34495e; /* Fondo de cabecera */
+    border-bottom: 2px solid #32CD32; /* Línea verde debajo de la cabecera */
+    font-weight: bold;
+}
+
+/* Estilos de los botones de acción en la tabla */
+.edit-btn, .delete-btn {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.delete-btn {
+    background-color: #01010000 !important; /* Rojo */
+}
+
+/* Contenedor responsivo para tablas grandes */
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* ============================================== */
+/* ESTILOS DEL MODAL (Ventana Emergente) */
+/* ============================================== */
+
+/* Fondo Oscuro del Modal (Backdrop) */
+.modal-backdrop {
+    display: none; /* Oculto por defecto, JS lo muestra */
+    position: fixed; 
+    z-index: 100; 
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.8); 
+    /* Centrar contenido */
+    display: flex; /* Usamos flex para centrar */
+    justify-content: center; 
+    align-items: center;
+}
+
+/* Contenido del Modal (El Formulario) */
+.modal-content {
+    background-color: #2c3e50; /* Fondo oscuro */
+    padding: 30px;
+    border-radius: 8px;
+    width: 90%; 
+    max-width: 500px;
+    position: relative;
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Botón de Cierre (X) */
+.close-btn {
+    color: white; 
+    float: right; 
+    font-size: 28px; 
+    font-weight: bold; 
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #32CD32;
+    text-decoration: none;
+}
+
+/* Estilos del Formulario en el Modal */
+#modal-title {
+    color: #32CD32;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: none;
+    background-color: #34495e;
+    color: white;
+    box-sizing: border-box; /* Asegura que padding no afecte el ancho total */
+}
+
+.form-input:focus {
+    outline: none;
+    border: 1px solid #32CD32;
+}
+
+#save-method-btn {
+    width: 100%;
+    margin-top: 15px;
+}
+
+
+
+/* ==================================================== */
+/* ESTILOS DE LA VENTANA MODAL (Admin Panel) */
+/* ==================================================== */
+
+/* Estilos de la ventana modal (Fondo oscuro) */
+#payment-modal.modal-backdrop {
+    display: none; /* Inicialmente OCULTO */
+    position: fixed;
+    z-index: 1000; /* Asegura que esté por encima de todo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.85); /* Fondo semitransparente oscuro */
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px); /* Efecto de desenfoque, opcional */
+}
+
+/* CLASE QUE HACE VISIBLE EL MODAL */
+#payment-modal.modal-backdrop.show-modal {
+    display: flex; 
+}
+
+/* Contenido del Modal (La caja flotante) */
+.modal-content {
+    background-color: #1d1c22;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(117, 182, 36, 0.7); /* Sombra de neón verde */
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    animation: slideIn 0.3s ease-out; /* Animación de entrada */
+}
+
+/* Botón de Cerrar (X) */
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.close-btn:hover {
+    color: #75B624;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* 1. Ocultar el modal por defecto */
+#payment-modal { 
+    /* Esta línea es CRUCIAL para que inicie oculto */
+    display: none; 
+    
+    /* Estas líneas son necesarias para que cubra toda la pantalla */
+    position: fixed;
+    z-index: 1000; /* Asegura que esté por encima de todos los demás elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.85); /* Fondo oscuro semitransparente */
+    
+    /* Propiedades usadas por JS para mostrar el modal */
+    justify-content: center; 
+    align-items: center; 
+}
+
+/* 2. Asegúrate de que el botón no esté siendo cubierto (menos probable) */
+.game-btn {
+    cursor: pointer;
+    /* Puedes añadir un z-index alto al botón si hay dudas de que otro elemento lo cubra, pero no debería ser necesario */
+}
 
 /* mediasQuerys */
 

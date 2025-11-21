@@ -104,7 +104,7 @@
                         <th class="checkout-col-img">Imagen</th>
                         <th class="checkout-col-name">Título</th>
                         <th class="checkout-col-qty">Cantidad</th>
-                        <th class="checkout-col-price">Precio/Subtotal</th>
+                        <th class="checkout-col-price">   Precio</th>
                         <th class="checkout-col-del">Eliminar</th>
                     </tr>
                 </thead>
@@ -122,18 +122,38 @@
                 <option value="cripto">Binance</option>
                 <option value="transferencia">Transferencia Bancaria(Zinli)</option>
             </select>
+      <div id="selected-method-summary" class="method-summary" style="margin-top:8px; font-size:0.95rem; color:#222;">
+        <p>Seleccione un método para ver los detalles aquí.</p>
+      </div>
         </div>
 
+        <div id="purchase-modal" class="modal-backdrop" style="display: none;">
+    <div class="modal-content">
+        <span id="close-purchase-modal-btn" class="close-btn">&times;</span>
+        <h3 id="modal-title">Finalizar Compra</h3>
+
+        <label for="payment-select" class="form-label">Selecciona tu Método de Pago:</label>
+        <select id="payment-select" required class="form-input">
+            <option value="" disabled selected>-- Elige un método --</option>
+            </select>
+
+        <div id="selected-method-details" class="method-details-box">
+            <p>Selecciona un método para ver los detalles de pago (cuenta, correo, etc.).</p>
+        </div>
+
+    </div>
+</div>
+
         <div class="checkout-total final">
-            <span>TOTAL A PAGAR:</span>
+            <span id="ta">TOTAL A PAGAR:</span>
             <span id="final-checkout-total">$0.00</span>
         </div>
 
-        <button class="buy-button" id="complete-purchase-btn">COMPLETAR COMPRA</button>
-
+        
+        <button     class="buy-button" id="complete-purchase-btn">COMPLETAR COMPRA</button>
     </div>
   </div>
-  <script src="index2.js"></script>
+  <script src="index.js"></script>
   
 </body>
 

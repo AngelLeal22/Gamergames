@@ -1,8 +1,3 @@
-// ====================================================
-// VARIABLES DEL DOM
-// ====================================================
-
-// Carrito y Juegos (EXISTENTE)
 const shopIcon = document.querySelector("#shop-icon");
 const cart = document.querySelector(".cart");
 const table = document.querySelector("#table-body"); // tbody del carrito pequeño
@@ -11,207 +6,38 @@ const busqueda = document.querySelector("#barra");
 const grid = document.getElementById("gameGrid");
 const logoutLink = document.querySelector("#Cs a");
 
-// Panel de Administración de Pagos (NUEVO)
-const formPayment = document.querySelector("#form"); // ID del formulario de pagos
-const paymentTableBody = document.querySelector("#payment-table-body"); // tbody de la tabla de pagos
-const saveButton = document.querySelector("#gu"); // Botón Guardar
-const cancelButton = document.querySelector("#cancel-edit-btn"); 
-
-// Inputs del formulario de pagos (NUEVO)
-const paymentIdInput = document.querySelector("#payment-id-input");
-const paymentNameInput = document.querySelector("#payment-name-input");
-const paymentPhoneInput = document.querySelector("#payment-phone-input");
-const paymentCedulaInput = document.querySelector("#payment-cedula-input");
-const paymentBankInput = document.querySelector("#payment-bank-input");
-const paymentEmailInput = document.querySelector("#payment-email-input");
-const paymentActiveInput = document.querySelector("#payment-active-input");
-
-// ====================================================
-// FUNCIONES DE PAGOS (CRUD)
-// ====================================================
-
-/**
- * 1. READ: Obtiene los métodos de pago de la API y los renderiza en la tabla.
- */
-async function fetchAndRenderPayments() {
-    try {
-        // Asumiendo que el endpoint para leer es "api/payments"
-        const response = await axios.get("api/payments");
-        const payments = Array.isArray(response.data) ? response.data : [];
-        
-        paymentTableBody.innerHTML = ''; // Limpiar la tabla
-        
-        if (payments.length === 0) {
-            paymentTableBody.innerHTML = '<tr><td colspan="8" class="no-payments" style="text-align: center; color: #75B624; padding: 20px;">No hay métodos de pago registrados.</td></tr>';
-            return;
-        }
-
-        payments.forEach(payment => {
-            const row = document.createElement("tr");
-            // Muestra un ícono o texto para el estado activo
-            const isActive = payment.activo 
-                ? '<span style="color: #75B624; font-weight: bold;">✔</span>' 
-                : '<span style="color: #ff4d4d; font-weight: bold;">✖</span>'; 
-
-            row.innerHTML = `
-                <td>${payment.nombre}</td>
-                <td>${payment.telefono}</td>
-                <td>${payment.cedula}</td>
-                <td>${payment.banco}</td>
-                <td>${payment.correo}</td>
-                <td style="text-align: center;">${isActive}</td>
-                <td>
-                    <button class="edit-btn" data-id="${payment.id}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-                    </button>
-                </td>
-                <td>
-                    <button class="delete-btn" data-id="${payment.id}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M15 6V4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v2"></path></svg>
-                    </button>
-                </td>
-            `;
-            // Almacenamos los datos completos en el dataset para usarlos en la edición
-            row.dataset.payment = JSON.stringify(payment); 
-            paymentTableBody.appendChild(row);
-        });
-
-    } catch (error) {
-        console.error("Error al cargar los métodos de pago:", error);
-        paymentTableBody.innerHTML = '<tr><td colspan="8" class="error-load" style="text-align: center; color: #ff4d4d; padding: 20px;">Error al cargar la lista de pagos.</td></tr>';
-    }
-}
-
-
-/**
- * 2. CREATE/UPDATE: Maneja el envío del formulario para crear o actualizar un pago.
- */
-formPayment.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    
-    // Recolectar datos del formulario
-    const data = {
-        nombre: paymentNameInput.value,
-        telefono: paymentPhoneInput.value,
-        cedula: paymentCedulaInput.value,
-        banco: paymentBankInput.value,
-        correo: paymentEmailInput.value,
-        activo: paymentActiveInput.checked, // Envía true o false
-    };
-    
-    const paymentId = paymentIdInput.value;
-    
-    try {
-        if (paymentId) {
-            // Lógica de EDICIÓN (PUT)
-            await axios.put(`api/payments/${paymentId}`, data);
-            alert("Método de pago actualizado exitosamente.");
-        } else {
-            // Lógica de CREACIÓN (POST)
-            await axios.post("api/payments", data);
-            alert("Método de pago agregado exitosamente.");
-        }
-        
-        // Limpiar formulario y recargar datos
-        formPayment.reset();
-        paymentIdInput.value = ''; // Resetear ID oculto
-        saveButton.textContent = 'Guardar';
-        cancelButton.classList.add('hidden'); // Ocultar botón cancelar
-        await fetchAndRenderPayments();
-
-    } catch (error) {
-        console.error("Error al guardar el método de pago:", error);
-        alert(`Error al guardar: ${error.response && error.response.data ? error.response.data.message : 'Verifique la conexión o el formato de los datos.'}`);
-    }
-});
-
-/**
- * 3. UPDATE (Parte 1): Carga los datos de una fila al formulario para su edición.
- */
-function loadPaymentForEdit(paymentData) {
-    paymentIdInput.value = paymentData.id;
-    paymentNameInput.value = paymentData.nombre;
-    paymentPhoneInput.value = paymentData.telefono;
-    paymentCedulaInput.value = paymentData.cedula;
-    paymentBankInput.value = paymentData.banco;
-    paymentEmailInput.value = paymentData.correo;
-    paymentActiveInput.checked = paymentData.activo;
-
-    saveButton.textContent = 'ACTUALIZAR MÉTODO';
-    cancelButton.classList.remove('hidden');
-}
-
-/**
- * 4. DELETE: Elimina un método de pago.
- */
-async function deletePayment(id) {
-    if (!confirm("¿Está seguro de que desea eliminar este método de pago?")) {
-        return;
-    }
-    try {
-        // Asumiendo que el endpoint para eliminar es DELETE api/payments/:id
-        await axios.delete(`api/payments/${id}`);
-        alert("Método de pago eliminado exitosamente.");
-        await fetchAndRenderPayments(); // Recargar tabla
-    } catch (error) {
-        console.error("Error al eliminar el método de pago:", error);
-        alert(`Error al eliminar: ${error.response && error.response.data ? error.response.data.message : 'Error de conexión.'}`);
-    }
-}
-
-/**
- * 5. Eventos de UI Adicionales para el CRUD
- */
-
-// Cancelar Edición: Limpia el formulario y lo vuelve a modo 'Crear'
-cancelButton.addEventListener('click', () => {
-    formPayment.reset();
-    paymentIdInput.value = '';
-    saveButton.textContent = 'Guardar';
-    cancelButton.classList.add('hidden');
-});
-
-// Delegación de eventos para botones de tabla (Editar/Eliminar)
-paymentTableBody.addEventListener('click', (e) => {
-    const editButton = e.target.closest('.edit-btn');
-    const deleteButton = e.target.closest('.delete-btn');
-    
-    if (editButton) {
-        const row = editButton.closest('tr');
-        // Convierte la cadena JSON de vuelta a objeto JS
-        const paymentData = JSON.parse(row.dataset.payment); 
-        loadPaymentForEdit(paymentData);
-        // Desplazarse al formulario para la edición
-        document.getElementById('form').scrollIntoView({ behavior: 'smooth' });
-    } else if (deleteButton) {
-        const id = deleteButton.dataset.id;
-        deletePayment(id);
-    }
-});
-
 // ====================================================
 // INICIALIZACIÓN Y LÓGICA DE JUEGOS Y CARRITO (EXISTENTE)
 // Se mantiene tu lógica original aquí
 // ====================================================
-
-// Cargar los pagos al inicio
-document.addEventListener('DOMContentLoaded', () => {
-    fetchAndRenderPayments();
-});
-
 
 // **EXISTENTE:** Lógica de abrir y cerrar el carrito pequeño
 shopIcon.addEventListener("click", (e) => {
   cart.classList.toggle("show-cart");
 });
 
-// **EXISTENTE:** Lógica de Carrito 
-grid.addEventListener("click", (e) => {
+// Logout global handler (works on admin and other pages)
+if (logoutLink) {
+  logoutLink.addEventListener("click", async (e) => {
+    e.preventDefault();
+    try {
+      await axios.get("/api/logout");
+    } catch (err) {
+      console.error("Logout failed", err);
+    }
+    // Redirect to login page after logout
+    window.location.pathname = "/login";
+  });
+}
+
+// **EXISTENTE:** Lógica de Carrito
+if (grid) {
+  grid.addEventListener("click", (e) => {
   // Verificamos si el elemento clicado tiene la clase 'game-btn'
   if (e.target.classList.contains("game-btn")) {
     // CORRECCIÓN CLAVE: Usamos .outerHTML para obtener la etiqueta <img> completa
     const imgElement = e.target.parentElement.parentElement.children[0];
-    const img = imgElement ? imgElement.outerHTML : '';
+    const img = imgElement ? imgElement.outerHTML : "";
     const name = e.target.parentElement.children[0].innerHTML;
     const exist = [...table.children].find(
       (Element) => Element.children[1].innerHTML === name
@@ -232,22 +58,23 @@ grid.addEventListener("click", (e) => {
             `;
       // Se delega la lógica de eliminar para evitar bucles de eventos
       const deleteCell = row.children[3];
-      deleteCell.querySelector('.delete-btn').addEventListener("click", (e) => {
-        e.currentTarget.closest('tr').remove();
+      deleteCell.querySelector(".delete-btn").addEventListener("click", (e) => {
+        e.currentTarget.closest("tr").remove();
       });
       table.append(row);
     }
   }
-});
-
+  });
+}
 
 // **EXISTENTE:** Lógica de filtros y carga de juegos (Preservada)
-(async () => {
+if (grid) {
+  (async () => {
   let juegos = [];
   try {
     // Intenta cargar la lista de juegos
     // Asumiendo que el endpoint es "/api/games"
-    const { data } = await axios.get("/api/games"); 
+    const { data } = await axios.get("/api/games");
     juegos = Array.isArray(data) ? [...data] : [];
   } catch (err) {
     console.error("No se pudieron cargar los juegos:", err);
@@ -325,21 +152,213 @@ grid.addEventListener("click", (e) => {
   // INICIALIZACIÓN: Renderiza todos los juegos al cargar la página
   renderGames(juegos, "No hay juegos disponibles.");
 
-  // lógica para cerrar sesión.
-  if (logoutLink) {
-    logoutLink.addEventListener("click", async (e) => {
-      e.preventDefault();
-      try {
-        await axios.get("/api/logout");
-      } catch (err) {
-        console.error("Logout failed", err);
-      }
-      window.location.pathname = "/login";
-    });
-  }
+  // lógica para cerrar sesión (handler registrado globalmente arriba)
 
   // lógica para vaciar el carrito
   tableClear.addEventListener("click", (e) => {
     table.innerHTML = "";
   });
-})();
+
+  // Close games-related IIFE early if grid exists
+  
+    // Lógica del CRUD de Métodos de Pago para la Vista de Administrador
+    // =================================================================
+    })();
+  }
+
+// Payment methods UI/CRUD runs regardless of whether the games grid exists
+(async () => {
+    // 1. SELECTORES del CRUD
+    const paymentTableBody = document.querySelector(
+      "#payment-methods-table-body"
+    );
+    const addPaymentBtn = document.querySelector("#add-payment-btn");
+    const paymentModal = document.querySelector("#payment-modal");
+    const closeModalBtn = document.querySelector("#close-modal-btn");
+    const modalTitle = document.querySelector("#modal-title");
+    const paymentForm = document.querySelector("#payment-form");
+    const methodIdField = document.querySelector("#method-id-field");
+    const methodNameField = document.querySelector("#method-name");
+    const methodEmailField = document.querySelector("#method-email");
+    const methodBankField = document.querySelector("#method-bank");
+    const methodAccountField = document.querySelector("#method-account");
+
+    // Endpoint de tu API de Métodos de Pago
+    const API_URL = "/api/payment-methods";
+
+    // -----------------------------------------------------
+    // 2. FUNCIONES DE INTERACCIÓN CON EL DOM (UI)
+    // -----------------------------------------------------
+
+    /** Abre el modal (formulario) para crear o editar. */
+    function openModal(isEdit = false, data = {}) {
+      paymentForm.reset(); // Limpiar formulario
+
+      if (isEdit) {
+        // Modo Edición
+        modalTitle.textContent = "Editar Método de Pago";
+        // Asume que el ID se llama _id en tu DB
+        methodIdField.value = data._id;
+        methodNameField.value = data.method;
+        methodEmailField.value = data.email;
+        methodBankField.value = data.bank || "";
+        methodAccountField.value = data.account;
+      } else {
+        // Modo Creación
+        modalTitle.textContent = "Crear Método de Pago";
+        methodIdField.value = "";
+      }
+
+      // El CSS del modal-backdrop tiene display: flex, por lo que solo cambiamos el display
+      paymentModal.style.display = "flex";
+    }
+
+    /** Cierra el modal. */
+    function closeModal() {
+      paymentModal.style.display = "none";
+      paymentForm.reset();
+    }
+
+    /** Renderiza las filas de la tabla de métodos de pago. (Lógica READ) */
+    function renderPaymentMethods(methods) {
+      paymentTableBody.innerHTML = ""; // Limpiar tabla
+
+      if (!Array.isArray(methods) || methods.length === 0) {
+        paymentTableBody.innerHTML =
+          '<tr><td colspan="5">No hay métodos de pago configurados.</td></tr>';
+        return;
+      }
+
+      methods.forEach((method) => {
+        // Asume que cada método tiene un ID único llamado _id
+        const row = document.createElement("tr");
+        row.innerHTML = `
+                <td>${method.method}</td>
+                <td>${method.email}</td>
+                <td>${method.bank || "N/A"}</td>
+                <td>${method.account}</td>
+                <td>
+                    <button class="edit-btn game-btn" data-id="${
+                      method._id
+                    }">Editar</button>
+                    <button class="delete-btn game-btn" data-id="${
+                      method._id
+                    }">Borrar</button>
+                </td>
+            `;
+        paymentTableBody.appendChild(row);
+
+        // 3. Añadir Listeners de Edición/Borrado
+        row
+          .querySelector(".edit-btn")
+          .addEventListener("click", () => handleEditClick(method));
+        row
+          .querySelector(".delete-btn")
+          .addEventListener("click", () => handleDelete(method._id));
+      });
+    }
+
+    // -----------------------------------------------------
+    // 3. FUNCIONES DE INTERACCIÓN CON EL API (CRUD)
+    // -----------------------------------------------------
+
+    /** Trae los métodos de pago del servidor. (READ) */
+    async function fetchPaymentMethods() {
+      try {
+        const response = await axios.get(API_URL);
+        renderPaymentMethods(response.data);
+      } catch (error) {
+        console.error("Error al cargar los métodos de pago:", error);
+        paymentTableBody.innerHTML =
+          '<tr><td colspan="5" style="color: red;">Error de conexión con el backend.</td></tr>';
+      }
+    }
+
+    /** Maneja la creación o actualización de un método. (CREATE/UPDATE) */
+    async function handleSubmit(e) {
+      e.preventDefault();
+
+      const id = methodIdField.value;
+      const methodData = {
+        method: methodNameField.value,
+        email: methodEmailField.value,
+        bank: methodBankField.value,
+        account: methodAccountField.value,
+      };
+
+      try {
+        if (id) {
+          // Petición PUT para Actualizar (UPDATE)
+          await axios.put(`${API_URL}/${id}`, methodData);
+          alert("Método de pago actualizado exitosamente.");
+        } else {
+          // Petición POST para Crear (CREATE)
+          // deshabilitar el botón para evitar dobles envíos
+          const saveBtn = document.querySelector('#save-method-btn');
+          if (saveBtn) saveBtn.disabled = true;
+
+          const resp = await axios.post(API_URL, methodData);
+          alert("Método de pago creado exitosamente.");
+          console.log('POST /api/payment-methods response:', resp.data);
+          if (saveBtn) saveBtn.disabled = false;
+        }
+
+        closeModal();
+        fetchPaymentMethods(); // Recargar la lista para ver los cambios
+      } catch (error) {
+          console.error("Error al guardar el método:", error);
+          // intentar mostrar mensaje más útil al usuario
+          const serverMsg = error?.response?.data?.detail || error?.response?.data?.error || error?.message;
+          alert(`Hubo un error al guardar el método de pago. ${serverMsg ? '\nDetalles: ' + serverMsg : ''}`);
+          // re-habilitar botón si estaba deshabilitado
+          const saveBtn = document.querySelector('#save-method-btn');
+          if (saveBtn) saveBtn.disabled = false;
+      }
+    }
+
+    /** Prepara el modal para la edición con los datos actuales. */
+    function handleEditClick(methodData) {
+      openModal(true, methodData);
+    }
+
+    /** Elimina un método de pago. (DELETE) */
+    async function handleDelete(id) {
+      if (
+        !confirm(
+          "¿Estás seguro de que quieres eliminar este método de pago? Esta acción no se puede deshacer."
+        )
+      ) {
+        return;
+      }
+
+      try {
+        // Petición DELETE
+        await axios.delete(`${API_URL}/${id}`);
+        alert("Método de pago eliminado exitosamente.");
+        fetchPaymentMethods(); // Recargar la lista
+      } catch (error) {
+        console.error("Error al eliminar el método:", error);
+        alert("Hubo un error al eliminar el método de pago.");
+      }
+    }
+
+    // -----------------------------------------------------
+    // 4. LISTENERS DE EVENTOS Y LLAMADA INICIAL
+    // -----------------------------------------------------
+
+    // Inicializar la carga de métodos al cargar la página
+    fetchPaymentMethods();
+
+    // Event Listeners para el Modal y Formulario
+    addPaymentBtn.addEventListener("click", () => openModal(false)); // Abrir para crear
+    closeModalBtn.addEventListener("click", closeModal);
+
+    // Cierra si se hace clic en el fondo oscuro del modal
+    paymentModal.addEventListener("click", (e) => {
+      if (e.target === paymentModal) {
+        closeModal();
+      }
+    });
+
+    paymentForm.addEventListener("submit", handleSubmit);
+  })();

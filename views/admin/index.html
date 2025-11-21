@@ -68,31 +68,61 @@
     
   </header>
   <br>
-  <section id="payment-admin-panel">
-    <div class="form-container">
-        <form id="form" class="payment-form">
-            <input type="text" name="nombre" id="payment-name-input" class="form-input" placeholder="...">
-            <button id="gu" type="submit" class="form-save-btn">Guardar</button>
-            <button id="cancel-edit-btn" type="button" class="form-cancel-btn hidden">Cancelar Edición</button>
-        </form>
-    </div>
+  <section id="payment-admin-section">
+    <h2>Administración de Métodos de Pago</h2>
 
-    <div class="table-container">
-        <h2 class="table-list-title">Métodos de Pago Registrados</h2>
-        <table id="payment-methods-table" class="payment-table">
+    <button id="add-payment-btn" class="game-btn admin-btn">
+        ➕ Crear Nuevo Método de Pago
+    </button>
+
+    <div class="table-responsive">
+        <table class="data-table payment-table">
             <thead>
                 <tr>
-                    <th class="col-name">Nombre del Pago</th>
-                    <th class="col-actions">Editar</th>
-                    <th class="col-actions">Eliminar</th>
+                    <th>Método</th>
+                    <th>Correo/Usuario</th>
+                    <th>Banco</th>
+                    <th>Cuenta/Teléfono</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
-            <tbody id="payment-table-body">
-                </tbody>
+            <tbody id="payment-methods-table-body">
+                <tr><td colspan="5">Cargando métodos de pago...</td></tr>
+            </tbody>
         </table>
     </div>
-
 </section>
+
+
+<div id="payment-modal" class="modal-backdrop">
+    <div class="modal-content">
+        <span id="close-modal-btn" class="close-btn">&times;</span>
+        <h3 id="modal-title">Crear Método de Pago</h3>
+        
+        <form id="payment-form">
+            <input type="hidden" id="method-id-field" value=""> 
+
+            <label for="method-name" class="form-label">Método:</label>
+            <select id="method-name" required class="form-input">
+                <option value="Pago Móvil">Pago Móvil</option>
+                <option value="Binance">Binance</option>
+                <option value="PayPal">PayPal</option>
+                <option value="Zinli">Transferencia Zinli</option>
+            </select>
+
+            <label for="method-email" class="form-label">Correo/Usuario:</label>
+            <input type="text" id="method-email" required class="form-input">
+
+            <label for="method-bank" class="form-label">Banco (Opcional):</label>
+            <input type="text" id="method-bank" class="form-input">
+
+            <label for="method-account" class="form-label">Número de Cuenta/Teléfono:</label>
+            <input type="text" id="method-account" required class="form-input">
+
+            <button type="submit" class="game-btn admin-btn" id="save-method-btn">Guardar Método</button>
+        </form>
+    </div>
+</div>
  
 
   <script src="index.js"></script>

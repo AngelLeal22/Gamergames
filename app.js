@@ -10,6 +10,7 @@ const usersRouter = require("./controllers/user");
 const loginRouter = require('./controllers/login');
 const logoutRouter = require("./controllers/logout");
 const payRouter = require ("./controllers/payments");
+const paymentMethodsRouter = require('./controllers/paymentMethods');
 const { MONGO_URI } = require("./config");
 
 
@@ -70,6 +71,7 @@ app.use("/api/users", usersRouter);
 app.use('/api/login', loginRouter);
 app.use('/api/logout', logoutRouter);
 app.use('/api/payments', payRouter);
+app.use('/api/payment-methods', paymentMethodsRouter);
 
 
 

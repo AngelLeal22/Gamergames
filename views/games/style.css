@@ -286,7 +286,7 @@ svg {
   padding: 0.25rem 0;
   font-size: 1.05rem;
   /* fuente más legible para la descripción */
-  font-family: 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Inter", "Roboto", "Helvetica Neue", Arial, sans-serif;
   font-weight: 400;
   color: #1f2937; /* texto oscuro, buena legibilidad sobre fondo claro */
   line-height: 1.2em;
@@ -510,187 +510,212 @@ header + br + section {
   z-index: 100;
 }
 
-
 /* ESTILOS VISTA DE COMPRA (CHECKOUT MODAL) */
 
-
 #checkout-modal {
-   /* Pantalla completa de fondo oscuro para bloquear el contenido */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.95);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2000; /* Asegura que esté por encima de todo */
+  /* Pantalla completa de fondo oscuro para bloquear el contenido */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000; /* Asegura que esté por encima de todo */
 }
 
 /* Clase para ocultar el modal inicialmente */
 #checkout-modal.hidden {
-    display: none;
+  display: none;
 }
 
 .checkout-container {
-    width: 95%;
-    max-width: 900px; /* Tamaño máximo para tablets/desktop */
-    background-color: #1a1a1a;
-    border: 2px solid rgb(117, 182, 36); /* Borde verde característico */
-    border-radius: 12px;
-    padding: 30px;
-    box-shadow: 0 0 25px rgba(117, 182, 36, 0.4);
-    color: #ffffff;
-    max-height: 90vh; /* Altura máxima visible */
-    overflow-y: auto;
+  width: 95%;
+  max-width: 900px; /* Tamaño máximo para tablets/desktop */
+  background-color: #1a1a1a;
+  border: 2px solid rgb(117, 182, 36); /* Borde verde característico */
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 0 25px rgba(117, 182, 36, 0.4);
+  color: #ffffff;
+  max-height: 90vh; /* Altura máxima visible */
+  overflow-y: auto;
 }
 
 .checkout-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 25px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #30363d;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #30363d;
 }
 
 .checkout-title {
-    font-size: 1.6rem;
-    color: #ffffff;
+  font-size: 1.6rem;
+  color: #ffffff;
 }
 
 .close-btn {
-    background: none;
-    border: none;
-    color: #ffffff;
-    font-size: 2.2rem;
-    cursor: pointer;
-    transition: color 0.2s;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 2.2rem;
+  cursor: pointer;
+  transition: color 0.2s;
 }
 
 .close-btn:hover {
-    color: #ff4d4d; /* Rojo para el botón de cierre */
+  color: #ff4d4d; /* Rojo para el botón de cierre */
 }
-
 
 /* 2. ESTILOS DE LA TABLA (CRUD) */
 
 #checkout-summary {
-    max-height: 40vh; /* Altura máxima para el scroll de los ítems */
-    overflow-y: auto;
-    margin-bottom: 20px;
-    padding-right: 5px;
+  max-height: 40vh; /* Altura máxima para el scroll de los ítems */
+  overflow-y: auto;
+  margin-bottom: 20px;
+  padding-right: 5px;
 }
 
 #checkout-table {
-    width: 100%;
-    border-collapse: collapse;
-    color: #c9d1d9;
-    font-size: 0.95rem;
+  width: 100%;
+  border-collapse: collapse;
+  color: #c9d1d9;
+  font-size: 0.95rem;
 }
 
 #checkout-table th {
-    padding: 10px 5px;
-    border-bottom: 2px solid #30363d;
-    text-align: left;
-    font-weight: 700;
-    color: rgb(117, 182, 36);
+  padding: 10px 5px;
+  border-bottom: 2px solid #30363d;
+  text-align: left;
+  font-weight: 700;
+  color: rgb(117, 182, 36);
 }
 
 #checkout-table td {
-    padding: 12px 5px;
-    border-bottom: 1px dotted #444;
-    vertical-align: middle;
+  padding: 12px 5px;
+  border-bottom: 1px dotted #444;
+  vertical-align: middle;
 }
 
 #checkout-table tr:hover {
-    background-color: #2a2a2a;
+  background-color: #2a2a2a;
 }
 
-.checkout-col-img { width: 60px; }
-.checkout-col-name { min-width: 250px; font-weight: 800;}
-.checkout-col-qty { width: 120px; text-align: center; }
-.checkout-col-price { width: 100px; text-align: right; font-weight: bold; }
-.checkout-col-del { width: 80px; text-align: center; }
+.checkout-col-img {
+  width: 60px;
+  font-family: "Inter";
+  
+}
+.checkout-col-name {
+  min-width: 250px;
+  font-family: "Inter";
+  display: flex;
+  justify-content: center;
+  
+}
+.checkout-col-qty {
+  width: 120px;
+  text-align: center;
+  font-family: "Inter";
+  
+}
+.checkout-col-price {
+  width: 100px;
+  text-align: right;
+  font-weight: bold;
+  font-family: "Inter";
+  
+}
+.checkout-col-del {
+  width: 80px;
+  text-align: center;
+  font-family: "Inter";
+  
+}
+#ta{
+  font-family: "Inter";
+}
+
 
 #checkout-table img {
-    width: 50px;
-    height: 50px;
-    border-radius: 4px;
-    object-fit: cover;
-    border: 1px solid #333;
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+  object-fit: cover;
+  border: 1px solid #333;
 }
-
 
 /* 3. CONTROLES CRUD (Editar/Eliminar) */
 
-
 /* Controles de cantidad */
 .qty-controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .qty-display {
-    width: 25px;
-    text-align: center;
-    color: #fff;
-    font-weight: bold;
+  width: 25px;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
 }
 
 .qty-btn {
-    /* Estilo del botón + y - */
-    background-color: #3d3d3d;
-    color: #fff;
-    border: none;
-    width: 28px;
-    height: 28px;
-    line-height: 1;
-    font-weight: 900;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s;
+  /* Estilo del botón + y - */
+  background-color: #3d3d3d;
+  color: #fff;
+  border: none;
+  width: 28px;
+  height: 28px;
+  line-height: 1;
+  font-weight: 900;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
 .qty-btn:hover {
-    background-color: rgb(117, 182, 36); /* Resaltar con el color principal */
+  background-color: rgb(117, 182, 36); /* Resaltar con el color principal */
 }
 
 /* Botón de Eliminar */
 .delete-item-btn {
-    background: none;
-    border: none;
-    color: #ff4d4d; /* Rojo para la acción de eliminar */
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: color 0.2s;
+  background: none;
+  border: none;
+  color: #ff4d4d; /* Rojo para la acción de eliminar */
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s;
 }
 
 .delete-item-btn:hover {
-    color: #cc0000;
+  color: #cc0000;
 }
 
 /* Botón Añadir más juegos (Adquirir/Crear) */
 .add-more-btn {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: transparent;
-    border: 2px dashed #4a4a4a;
-    color: #c9d1d9;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-bottom: 20px;
-    transition: border-color 0.2s, color 0.2s;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: transparent;
+  border: 2px dashed #4a4a4a;
+  color: #c9d1d9;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: border-color 0.2s, color 0.2s;
 }
 
 .add-more-btn:hover {
-    border-color: rgb(117, 182, 36);
-    color: rgb(117, 182, 36);
+  border-color: rgb(117, 182, 36);
+  color: rgb(117, 182, 36);
 }
 
 /* ==================================================== */
@@ -698,79 +723,139 @@ header + br + section {
 /* ==================================================== */
 
 .checkout-total {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 0;
-    font-size: 1.1rem;
-    border-top: 1px solid #30363d;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 1.1rem;
+  border-top: 1px solid #30363d;
 }
 
 .checkout-total.final {
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: rgb(117, 182, 36);
-    border-top: 2px solid rgb(117, 182, 36);
-    margin-top: 10px;
-    padding-top: 10px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: rgb(117, 182, 36);
+  border-top: 2px solid rgb(117, 182, 36);
+  margin-top: 10px;
+  padding-top: 10px;
+  font-family: "Inter";
 }
 
 .buy-button {
-    /* Estilo del botón de Finalizar Compra (POST) */
-    width: 100%;
-    padding: 15px;
-    margin-top: 20px;
-    background-color: rgb(117, 182, 36);
-    color: #1a1a1a;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.2s;
+  /* Estilo del botón de Finalizar Compra (POST) */
+  width: 100%;
+  padding: 15px;
+  margin-top: 20px;
+  background-color: rgb(117, 182, 36);
+  color: #1a1a1a;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
 .buy-button:hover {
-    background-color: rgb(70, 114, 17);
+  background-color: rgb(70, 114, 17);
 }
-
-
 
 /* ... (Resto del CSS) ... */
 
 /* 5. ESTILOS ADICIONALES PARA EL SELECTOR DE PAGO */
 .payment-section {
-    margin: 20px 0;
-    padding-top: 10px;
-    border-top: 1px solid #30363d;
+  margin: 20px 0;
+  padding-top: 10px;
+  border-top: 1px solid #30363d;
+  font-family: 'Inter'
 }
 
 .payment-title {
-    font-size: 1.2rem;
-    color: rgb(117, 182, 36); /* Título en verde */
-    margin-bottom: 10px;
-    font-family: 'Inter', sans-serif; /* Más legible que Press Start 2P */
-    font-weight: 600;
+  font-size: 1.2rem;
+  color: rgb(117, 182, 36); /* Título en verde */
+  margin-bottom: 10px;
+  font-family: "Inter", sans-serif; /* Más legible que Press Start 2P */
+  font-weight: 600;
 }
 
 .payment-select {
-    width: 100%;
-    padding: 12px 10px;
-    font-size: 1rem;
-    background-color: #2a2a2a; /* Fondo oscuro */
-    color: #ffffff;
-    border: 1px solid #30363d;
-    border-radius: 6px;
-    appearance: none; /* Oculta la flecha nativa */
-    cursor: pointer;
-    transition: border-color 0.2s;
+  width: 100%;
+  padding: 12px 10px;
+  font-size: 1rem;
+  background-color: #2a2a2a; /* Fondo oscuro */
+  color: #ffffff;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  appearance: none; /* Oculta la flecha nativa */
+  cursor: pointer;
+  transition: border-color 0.2s;
 }
 
-.payment-select:hover, .payment-select:focus {
-    border-color: rgb(117, 182, 36); /* Resalta en verde */
-    outline: none;
+.payment-select:hover,
+.payment-select:focus {
+  border-color: rgb(117, 182, 36); /* Resalta en verde */
+  outline: none;
+}
+
+/* Estilo para la nueva casilla de detalles del método de pago */
+.method-details-box {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #32cd32; /* Borde verde para el énfasis */
+  border-radius: 6px;
+  background-color: #1a1a1a; /* Fondo oscuro, similar al modal */
+  color: white;
+  font-size: 0.9rem;
 }
 
 
+
+#selected-method-summary {
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: #f1f1f1e8;
+  color: #ffffff;
+  margin-top: 8px;
+  font-size: 0.95rem;
+  border: 1px solid rgba(117,182,36,0.25);
+  font-family: 'Inter'
+}
+
+.method-details-box h4 {
+  margin-top: 0;
+  color: #32cd32;
+  font-size: 1.1rem;
+  border-bottom: 1px solid #30363d;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.method-details-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.method-details-box li {
+  margin-bottom: 5px;
+}
+
+.method-details-box .instruction {
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px dashed #30363d;
+  color: #ffd700; /* Color amarillo para la instrucción */
+  font-weight: bold;
+}
+
+.error-msg {
+  color: #ff4d4d; /* Color rojo para errores */
+}
+
+/* El modal de compra usa las mismas clases de estilos de modal-backdrop y modal-content */
+#purchase-modal {
+  /* Opcional: Asegurarse de que el modal de compra use el estilo base del modal */
+  /* La clase .modal-backdrop ya debería manejar esto */
+}
 
 /* mediasQuerys */
 
