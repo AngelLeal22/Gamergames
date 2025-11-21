@@ -1,21 +1,7 @@
 // =====================
 // SELECTORES DEL DOM (declarados arriba para accesibilidad global)
 // =====================
-console.log('views/games/index.js cargado');
-
-// Listener delegado de respaldo: captura clicks en el botón completar compra
-document.addEventListener('click', function (e) {
-  try {
-    const btn = e.target && e.target.closest ? e.target.closest('#complete-purchase-btn, #confirm-purchase-btn') : null;
-    if (!btn) return;
-    console.log('delegated: completar compra detectado');
-    try { e.preventDefault(); } catch(_) {}
-    try { alert('¡Compra completada con éxito! Gracias por tu compra.'); } catch(_) {}
-    try { closePurchaseModal(); } catch(_) {}
-  } catch (err) {
-    console.warn('Error en delegated click handler:', err);
-  }
-}, true); // use capture to maximize chance to receive event
+ 
 const shopIcon = document.querySelector("#shop-icon");
 const cart = document.querySelector(".cart");
 const table = document.querySelector("#table-body"); // tbody del carrito pequeño
